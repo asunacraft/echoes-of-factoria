@@ -1,0 +1,37 @@
+Echoes of Factoria - Art & Asset License
+
+Copyright (c) 2026 asunacraft
+
+All textures, models, icons, sounds, and other creative/art assets in this
+repository (everything under src/main/resources/assets, excluding .json
+files that are purely functional data such as recipes, tags, or loot
+tables) are licensed under:
+
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+(CC BY-NC-SA 4.0)
+
+Full license text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+You are free to:
+  - Share — copy and redistribute the material in any medium or format
+  - Adapt — remix, transform, and build upon the material
+
+Under the following terms:
+  - Attribution — You must give appropriate credit to asunacraft, provide
+    a link to this license, and indicate if changes were made.
+  - NonCommercial — You may not use the material for commercial purposes.
+  - ShareAlike — If you remix, transform, or build upon the material, you
+    must distribute your contributions under the same license as the
+    original.
+
+---
+
+NOTE: This license covers art assets ONLY. The mod's source code (Java,
+Gradle scripts, and other programmatic files) is licensed separately under
+the MIT License - see LICENSE for details.
+
+Inclusion of this mod's assets, unmodified, within modpacks is explicitly
+permitted and does not require separate permission, provided the modpack
+itself is non-commercial and this mod is credited in the modpack's mod
+list/credits.
