@@ -8,6 +8,7 @@ requires: pillow (pip install Pillow)
 """
 
 from PIL import Image
+import math
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -47,8 +48,19 @@ def lerp(a, b, t):
     return tuple(round(a[i] + (b[i] - a[i]) * t) for i in range(3))
 
 
-def recolor(base_path, palette):
-    """Resize the base template to 16x16 and remap luminance through the palette."""
+def contrast(t, curve):
+    """Apply an S-curve to luminance so shadows read darker and highlights brighter."""
+    if curve >= 1.0:
+        return t
+    return 0.5 + 0.5 * math.copysign(abs(2.0 * t - 1.0) ** curve, 2.0 * t - 1.0)
+
+
+def recolor(base_path, palette, curve=1.0):
+    """Resize the base template to 16x16 and remap luminance through the palette.
+
+    curve: S-curve strength applied to luminance before the palette lookup;
+    values < 1.0 deepen the shadows / lift the highlights (used for ingots).
+    """
     img = Image.open(base_path).convert("RGBA").resize((16, 16), Image.LANCZOS)
     px = img.load()
     dark, mid, light = palette
@@ -58,6 +70,7 @@ def recolor(base_path, palette):
             if a < 40:
                 continue
             t = min(1.0, max(0.0, 0.2126 * r + 0.7152 * g + 0.0722 * b) / 255.0)
+            t = contrast(t, curve)
             color = lerp(dark, mid, t / 0.5) if t < 0.5 else lerp(mid, light, (t - 0.5) / 0.5)
             px[x, y] = (*color, a)
     return img
@@ -69,7 +82,7 @@ def main():
     for metal in METALS:
         recolor(RAW_BASE, metal["palette"]).save(os.path.join(ITEM_RAW, f"raw_{metal['name']}.png"))
         ingot_palette = metal.get("ingot_palette", metal["palette"])
-        recolor(INGOT_BASE, ingot_palette).save(os.path.join(ITEM_INGOT, f"{metal['ingot']}_ingot.png"))
+        recolor(INGOT_BASE, ingot_palette, curve=0.5).save(os.path.join(ITEM_INGOT, f"{metal['ingot']}_ingot.png"))
         print(f"item/raw/raw_{metal['name']}.png, item/ingot/{metal['ingot']}_ingot.png")
 
 
