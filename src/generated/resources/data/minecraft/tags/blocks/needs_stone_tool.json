@@ -1,6 +1,10 @@
 {
   "values": [
-    "eof:raw_tin_ore",
-    "eof:deepslate_raw_tin_ore"
+    "eof:cassiterite_ore",
+    "eof:deepslate_cassiterite_ore",
+    "eof:galena_ore",
+    "eof:deepslate_galena_ore",
+    "eof:pyrite_ore",
+    "eof:deepslate_pyrite_ore"
   ]
 }

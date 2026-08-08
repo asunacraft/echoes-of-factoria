@@ -17,12 +17,23 @@ public class EOFItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(EOFItems.RAW_SPHALERITE, "raw");
-        basicItem(EOFItems.RAW_TIN, "raw");
-        basicItem(EOFItems.RAW_SILVER, "raw");
+        basicItem(EOFItems.RAW_CASSITERITE, "raw");
+        basicItem(EOFItems.RAW_ACANTHITE, "raw");
+        basicItem(EOFItems.RAW_WOLFRAMITE, "raw");
+        basicItem(EOFItems.RAW_RUTILE, "raw");
+        basicItem(EOFItems.RAW_CHROMITE, "raw");
+        basicItem(EOFItems.RAW_GALENA, "raw");
+        basicItem(EOFItems.RAW_PYRITE, "raw");
 
         basicItem(EOFItems.ZINC_INGOT, "ingot");
         basicItem(EOFItems.TIN_INGOT, "ingot");
         basicItem(EOFItems.SILVER_INGOT, "ingot");
+        basicItem(EOFItems.TUNGSTEN_INGOT, "ingot");
+        basicItem(EOFItems.TITANIUM_INGOT, "ingot");
+        basicItem(EOFItems.CHROMIUM_INGOT, "ingot");
+        basicItem(EOFItems.LEAD_INGOT, "ingot");
+        basicItem(EOFItems.BRASS_INGOT, "ingot");
+        basicItem(EOFItems.BRONZE_INGOT, "ingot");
     }
 
     private void basicItem(RegistryObject<Item> item, String category) {

@@ -22,11 +22,13 @@ INGOT_BASE = os.path.join(TEMPLATES, "ingot_base.png")
 # name: raw texture suffix (raw_<name>.png)
 # ingot: ingot texture suffix (<ingot>_ingot.png)
 # palette: (dark stone, mid, bright metal) RGB stops for the luminance->color map
+# ingot_palette: optional; overrides the palette used for the ingot texture
 METALS = [
     {
         "name": "sphalerite",
         "ingot": "zinc",
         "palette": ((58, 72, 64), (128, 176, 140), (186, 220, 190)),
+        "ingot_palette": ((58, 74, 60), (90, 178, 112), (138, 228, 150)),
     },
     {
         "name": "tin",
@@ -66,7 +68,8 @@ def main():
     os.makedirs(ITEM_INGOT, exist_ok=True)
     for metal in METALS:
         recolor(RAW_BASE, metal["palette"]).save(os.path.join(ITEM_RAW, f"raw_{metal['name']}.png"))
-        recolor(INGOT_BASE, metal["palette"]).save(os.path.join(ITEM_INGOT, f"{metal['ingot']}_ingot.png"))
+        ingot_palette = metal.get("ingot_palette", metal["palette"])
+        recolor(INGOT_BASE, ingot_palette).save(os.path.join(ITEM_INGOT, f"{metal['ingot']}_ingot.png"))
         print(f"item/raw/raw_{metal['name']}.png, item/ingot/{metal['ingot']}_ingot.png")
 
 

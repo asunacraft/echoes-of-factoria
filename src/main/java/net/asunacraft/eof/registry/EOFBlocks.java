@@ -21,31 +21,35 @@ public class EOFBlocks {
                     .strength(3.5f)
                     .requiresCorrectToolForDrops()));
 
-    public static final RegistryObject<Block> SPHALERITE_ORE = BLOCKS.register(
-            "sphalerite_ore",
-            () -> ore(BlockBehaviour.Properties.of().mapColor(MapColor.SAND), SoundType.STONE));
-    public static final RegistryObject<Block> DEEPSLATE_SPHALERITE_ORE = BLOCKS.register(
-            "deepslate_sphalerite_ore",
-            () -> ore(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE), SoundType.DEEPSLATE));
+    public static final RegistryObject<Block> SPHALERITE_ORE = ore("sphalerite_ore", MapColor.SAND, SoundType.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_SPHALERITE_ORE = ore("deepslate_sphalerite_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
 
-    public static final RegistryObject<Block> RAW_TIN_ORE = BLOCKS.register(
-            "raw_tin_ore",
-            () -> ore(BlockBehaviour.Properties.of().mapColor(MapColor.STONE), SoundType.STONE));
-    public static final RegistryObject<Block> DEEPSLATE_RAW_TIN_ORE = BLOCKS.register(
-            "deepslate_raw_tin_ore",
-            () -> ore(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE), SoundType.DEEPSLATE));
+    public static final RegistryObject<Block> CASSITERITE_ORE = ore("cassiterite_ore", MapColor.STONE, SoundType.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_CASSITERITE_ORE = ore("deepslate_cassiterite_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
 
-    public static final RegistryObject<Block> RAW_SILVER_ORE = BLOCKS.register(
-            "raw_silver_ore",
-            () -> ore(BlockBehaviour.Properties.of().mapColor(MapColor.STONE), SoundType.STONE));
-    public static final RegistryObject<Block> DEEPSLATE_RAW_SILVER_ORE = BLOCKS.register(
-            "deepslate_raw_silver_ore",
-            () -> ore(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE), SoundType.DEEPSLATE));
+    public static final RegistryObject<Block> ACANTHITE_ORE = ore("acanthite_ore", MapColor.STONE, SoundType.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_ACANTHITE_ORE = ore("deepslate_acanthite_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
 
-    private static Block ore(BlockBehaviour.Properties properties, SoundType sound) {
-        return new Block(properties
+    public static final RegistryObject<Block> WOLFRAMITE_ORE = ore("wolframite_ore", MapColor.STONE, SoundType.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_WOLFRAMITE_ORE = ore("deepslate_wolframite_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
+
+    public static final RegistryObject<Block> RUTILE_ORE = ore("rutile_ore", MapColor.STONE, SoundType.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_RUTILE_ORE = ore("deepslate_rutile_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
+
+    public static final RegistryObject<Block> CHROMITE_ORE = ore("chromite_ore", MapColor.STONE, SoundType.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_CHROMITE_ORE = ore("deepslate_chromite_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
+
+    public static final RegistryObject<Block> GALENA_ORE = ore("galena_ore", MapColor.STONE, SoundType.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_GALENA_ORE = ore("deepslate_galena_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
+
+    public static final RegistryObject<Block> PYRITE_ORE = ore("pyrite_ore", MapColor.STONE, SoundType.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_PYRITE_ORE = ore("deepslate_pyrite_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
+
+    private static RegistryObject<Block> ore(String name, MapColor color, SoundType sound) {
+        return BLOCKS.register(name, () -> new Block(BlockBehaviour.Properties.of()
+                .mapColor(color)
                 .strength(3.0f)
                 .sound(sound)
-                .requiresCorrectToolForDrops());
+                .requiresCorrectToolForDrops()));
     }
 }

@@ -25,20 +25,40 @@ public class EOFTagProvider extends TagsProvider<Block> {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(key(EOFBlocks.SPHALERITE_ORE.get()),
                         key(EOFBlocks.DEEPSLATE_SPHALERITE_ORE.get()),
-                        key(EOFBlocks.RAW_TIN_ORE.get()),
-                        key(EOFBlocks.DEEPSLATE_RAW_TIN_ORE.get()),
-                        key(EOFBlocks.RAW_SILVER_ORE.get()),
-                        key(EOFBlocks.DEEPSLATE_RAW_SILVER_ORE.get()));
+                        key(EOFBlocks.CASSITERITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_CASSITERITE_ORE.get()),
+                        key(EOFBlocks.ACANTHITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_ACANTHITE_ORE.get()),
+                        key(EOFBlocks.WOLFRAMITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_WOLFRAMITE_ORE.get()),
+                        key(EOFBlocks.RUTILE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_RUTILE_ORE.get()),
+                        key(EOFBlocks.CHROMITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_CHROMITE_ORE.get()),
+                        key(EOFBlocks.GALENA_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_GALENA_ORE.get()),
+                        key(EOFBlocks.PYRITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_PYRITE_ORE.get()));
 
         tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(key(EOFBlocks.RAW_TIN_ORE.get()),
-                        key(EOFBlocks.DEEPSLATE_RAW_TIN_ORE.get()));
+                .add(key(EOFBlocks.CASSITERITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_CASSITERITE_ORE.get()),
+                        key(EOFBlocks.GALENA_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_GALENA_ORE.get()),
+                        key(EOFBlocks.PYRITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_PYRITE_ORE.get()));
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(key(EOFBlocks.SPHALERITE_ORE.get()),
                         key(EOFBlocks.DEEPSLATE_SPHALERITE_ORE.get()),
-                        key(EOFBlocks.RAW_SILVER_ORE.get()),
-                        key(EOFBlocks.DEEPSLATE_RAW_SILVER_ORE.get()));
+                        key(EOFBlocks.ACANTHITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_ACANTHITE_ORE.get()),
+                        key(EOFBlocks.WOLFRAMITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_WOLFRAMITE_ORE.get()),
+                        key(EOFBlocks.RUTILE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_RUTILE_ORE.get()),
+                        key(EOFBlocks.CHROMITE_ORE.get()),
+                        key(EOFBlocks.DEEPSLATE_CHROMITE_ORE.get()));
     }
 
     @SuppressWarnings("deprecation")

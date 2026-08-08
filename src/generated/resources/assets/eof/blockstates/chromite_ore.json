@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "eof:block/chromite_ore"
+    }
+  }
+}

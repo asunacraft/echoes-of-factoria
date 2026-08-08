@@ -2,7 +2,13 @@
   "values": [
     "eof:sphalerite_ore",
     "eof:deepslate_sphalerite_ore",
-    "eof:raw_silver_ore",
-    "eof:deepslate_raw_silver_ore"
+    "eof:acanthite_ore",
+    "eof:deepslate_acanthite_ore",
+    "eof:wolframite_ore",
+    "eof:deepslate_wolframite_ore",
+    "eof:rutile_ore",
+    "eof:deepslate_rutile_ore",
+    "eof:chromite_ore",
+    "eof:deepslate_chromite_ore"
   ]
 }

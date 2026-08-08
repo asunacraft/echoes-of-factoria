@@ -9,6 +9,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import net.asunacraft.eof.datagen.DataGenerators;
 import net.asunacraft.eof.registry.EOFBlocks;
+import net.asunacraft.eof.registry.EOFCreativeTabs;
+import net.asunacraft.eof.registry.EOFFeatures;
 import net.asunacraft.eof.registry.EOFItems;
 
 @Mod(EchoesOfFactoria.MODID)
@@ -23,6 +25,8 @@ public class EchoesOfFactoria {
 
         EOFBlocks.BLOCKS.register(modEventBus);
         EOFItems.ITEMS.register(modEventBus);
+        EOFFeatures.FEATURES.register(modEventBus);
+        EOFCreativeTabs.CREATIVE_TABS.register(modEventBus);
 
         modEventBus.addListener(DataGenerators::gatherData);
 

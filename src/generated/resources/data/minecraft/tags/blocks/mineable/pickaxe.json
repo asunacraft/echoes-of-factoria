@@ -2,9 +2,19 @@
   "values": [
     "eof:sphalerite_ore",
     "eof:deepslate_sphalerite_ore",
-    "eof:raw_tin_ore",
-    "eof:deepslate_raw_tin_ore",
-    "eof:raw_silver_ore",
-    "eof:deepslate_raw_silver_ore"
+    "eof:cassiterite_ore",
+    "eof:deepslate_cassiterite_ore",
+    "eof:acanthite_ore",
+    "eof:deepslate_acanthite_ore",
+    "eof:wolframite_ore",
+    "eof:deepslate_wolframite_ore",
+    "eof:rutile_ore",
+    "eof:deepslate_rutile_ore",
+    "eof:chromite_ore",
+    "eof:deepslate_chromite_ore",
+    "eof:galena_ore",
+    "eof:deepslate_galena_ore",
+    "eof:pyrite_ore",
+    "eof:deepslate_pyrite_ore"
   ]
 }

@@ -19,10 +19,20 @@ public class EOFBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         simpleOre(EOFBlocks.SPHALERITE_ORE);
         simpleOre(EOFBlocks.DEEPSLATE_SPHALERITE_ORE);
-        simpleOre(EOFBlocks.RAW_TIN_ORE);
-        simpleOre(EOFBlocks.DEEPSLATE_RAW_TIN_ORE);
-        simpleOre(EOFBlocks.RAW_SILVER_ORE);
-        simpleOre(EOFBlocks.DEEPSLATE_RAW_SILVER_ORE);
+        simpleOre(EOFBlocks.CASSITERITE_ORE);
+        simpleOre(EOFBlocks.DEEPSLATE_CASSITERITE_ORE);
+        simpleOre(EOFBlocks.ACANTHITE_ORE);
+        simpleOre(EOFBlocks.DEEPSLATE_ACANTHITE_ORE);
+        simpleOre(EOFBlocks.WOLFRAMITE_ORE);
+        simpleOre(EOFBlocks.DEEPSLATE_WOLFRAMITE_ORE);
+        simpleOre(EOFBlocks.RUTILE_ORE);
+        simpleOre(EOFBlocks.DEEPSLATE_RUTILE_ORE);
+        simpleOre(EOFBlocks.CHROMITE_ORE);
+        simpleOre(EOFBlocks.DEEPSLATE_CHROMITE_ORE);
+        simpleOre(EOFBlocks.GALENA_ORE);
+        simpleOre(EOFBlocks.DEEPSLATE_GALENA_ORE);
+        simpleOre(EOFBlocks.PYRITE_ORE);
+        simpleOre(EOFBlocks.DEEPSLATE_PYRITE_ORE);
     }
 
     private void simpleOre(RegistryObject<Block> block) {
