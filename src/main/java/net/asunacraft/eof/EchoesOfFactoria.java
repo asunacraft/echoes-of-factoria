@@ -7,6 +7,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import net.asunacraft.eof.datagen.DataGenerators;
 import net.asunacraft.eof.registry.EOFBlocks;
 import net.asunacraft.eof.registry.EOFItems;
 
@@ -22,6 +23,8 @@ public class EchoesOfFactoria {
 
         EOFBlocks.BLOCKS.register(modEventBus);
         EOFItems.ITEMS.register(modEventBus);
+
+        modEventBus.addListener(DataGenerators::gatherData);
 
         EchoesOfFactoria.init();
     }

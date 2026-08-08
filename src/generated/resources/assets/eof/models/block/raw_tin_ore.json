@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "eof:block/ores/raw_tin_ore"
+  }
+}

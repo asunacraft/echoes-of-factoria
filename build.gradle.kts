@@ -14,6 +14,12 @@ val mcVersion = project.property("minecraft_version") as String
 val fgVersion = project.property("forge_version") as String
 val mcMappingVersion = project.property("mapping_version") as String
 
+sourceSets {
+    main {
+        resources.srcDir("src/generated/resources")
+    }
+}
+
 tasks.processResources {
     val expandProps = mapOf(
         "mod_id" to project.property("mod_id"),
