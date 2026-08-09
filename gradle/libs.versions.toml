@@ -1,0 +1,11 @@
+[versions]
+minecraft = "1.20.1"
+forge = "47.4.22"
+mappings = "1.20.1"
+forgegradle = "6.0.54"
+spotbugs = "6.0.26"
+pmd = "6.55.0"
+
+[plugins]
+forgegradle = { id = "net.minecraftforge.gradle", version.ref = "forgegradle" }
+spotbugs = { id = "com.github.spotbugs", version.ref = "spotbugs" }

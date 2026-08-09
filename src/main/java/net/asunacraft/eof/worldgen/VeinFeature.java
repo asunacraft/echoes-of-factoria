@@ -72,19 +72,20 @@ public class VeinFeature extends Feature<OreConfiguration> {
     }
 
     private static Direction moveInBounds(BlockPos.MutableBlockPos pos, Direction dir, int minX, int maxX, int minZ, int maxZ) {
-        if (dir.getAxis() == Direction.Axis.X) {
-            int next = pos.getX() + dir.getStepX();
+        Direction out = dir;
+        if (out.getAxis() == Direction.Axis.X) {
+            int next = pos.getX() + out.getStepX();
             if (next < minX || next > maxX) {
-                dir = dir.getOpposite();
+                out = out.getOpposite();
             }
         } else {
-            int next = pos.getZ() + dir.getStepZ();
+            int next = pos.getZ() + out.getStepZ();
             if (next < minZ || next > maxZ) {
-                dir = dir.getOpposite();
+                out = out.getOpposite();
             }
         }
-        pos.move(dir);
-        return dir;
+        pos.move(out);
+        return out;
     }
 
     private static boolean withinBounds(BlockPos pos, Direction dir, int minX, int maxX, int minZ, int maxZ) {

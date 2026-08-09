@@ -18,6 +18,14 @@ public class EOFLootSubProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         this.dropSelf(EOFBlocks.ELECTRIC_FURNACE.get());
+        this.dropSelf(EOFBlocks.ELECTRIC_CRUSHER.get());
+
+        this.dropSelf(EOFBlocks.CASING_ULV.get());
+        this.dropSelf(EOFBlocks.CASING_LV.get());
+        this.dropSelf(EOFBlocks.CASING_MV.get());
+        this.dropSelf(EOFBlocks.CASING_HV.get());
+        this.dropSelf(EOFBlocks.CASING_EV.get());
+        this.dropSelf(EOFBlocks.CASING_IV.get());
 
         this.add(EOFBlocks.SPHALERITE_ORE.get(), block -> createOreDrop(block, EOFItems.RAW_SPHALERITE.get()));
         this.add(EOFBlocks.DEEPSLATE_SPHALERITE_ORE.get(),

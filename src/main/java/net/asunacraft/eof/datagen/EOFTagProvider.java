@@ -23,7 +23,15 @@ public class EOFTagProvider extends TagsProvider<Block> {
     @Override
     protected void addTags(HolderLookup.Provider lookupProvider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(key(EOFBlocks.SPHALERITE_ORE.get()),
+                .add(key(EOFBlocks.ELECTRIC_FURNACE.get()),
+                        key(EOFBlocks.ELECTRIC_CRUSHER.get()),
+                        key(EOFBlocks.CASING_ULV.get()),
+                        key(EOFBlocks.CASING_LV.get()),
+                        key(EOFBlocks.CASING_MV.get()),
+                        key(EOFBlocks.CASING_HV.get()),
+                        key(EOFBlocks.CASING_EV.get()),
+                        key(EOFBlocks.CASING_IV.get()),
+                        key(EOFBlocks.SPHALERITE_ORE.get()),
                         key(EOFBlocks.DEEPSLATE_SPHALERITE_ORE.get()),
                         key(EOFBlocks.CASSITERITE_ORE.get()),
                         key(EOFBlocks.DEEPSLATE_CASSITERITE_ORE.get()),
@@ -41,7 +49,15 @@ public class EOFTagProvider extends TagsProvider<Block> {
                         key(EOFBlocks.DEEPSLATE_PYRITE_ORE.get()));
 
         tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(key(EOFBlocks.CASSITERITE_ORE.get()),
+                .add(key(EOFBlocks.ELECTRIC_FURNACE.get()),
+                        key(EOFBlocks.ELECTRIC_CRUSHER.get()),
+                        key(EOFBlocks.CASING_ULV.get()),
+                        key(EOFBlocks.CASING_LV.get()),
+                        key(EOFBlocks.CASING_MV.get()),
+                        key(EOFBlocks.CASING_HV.get()),
+                        key(EOFBlocks.CASING_EV.get()),
+                        key(EOFBlocks.CASING_IV.get()),
+                        key(EOFBlocks.CASSITERITE_ORE.get()),
                         key(EOFBlocks.DEEPSLATE_CASSITERITE_ORE.get()),
                         key(EOFBlocks.GALENA_ORE.get()),
                         key(EOFBlocks.DEEPSLATE_GALENA_ORE.get()),

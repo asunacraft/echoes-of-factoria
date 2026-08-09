@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- Data holders (BlockEntities, item handlers, energy buffers) intentionally
+         expose mutable internal state to their own package. -->
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+
+    <!-- BlockEntities are not Java-serialized; the SE_* findings do not apply. -->
+    <Match>
+        <Bug pattern="SE_NO_SERIALVERSIONID,SE_BAD_FIELD,SE_TRANSIENT_FIELD_NOT_RESTORED"/>
+    </Match>
+
+    <!-- Minecraft's @Nullable-heavy API triggers redundant-nullcheck / deref noise. -->
+    <Match>
+        <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE,NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
+    </Match>
+
+    <!-- BlockEntityType.Builder.build(null) passes null DataFixer by design. -->
+    <Match>
+        <Class name="net.asunacraft.eof.registry.EOFBlockEntities"/>
+        <Bug pattern="NP_NONNULL_PARAM_VIOLATION"/>
+    </Match>
+</FindBugsFilter>

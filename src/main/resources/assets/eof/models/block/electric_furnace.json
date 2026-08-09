@@ -1,8 +1,8 @@
 {
   "parent": "block/orientable",
   "textures": {
-    "top": "eof:block/machine_top",
-    "front": "eof:block/electric_furnace_front",
-    "side": "eof:block/machine_side"
+    "top": "eof:block/machine_casings/casing_lv",
+    "front": "eof:block/machines/electric_furnace_front",
+    "side": "eof:block/machine_casings/casing_lv"
   }
 }

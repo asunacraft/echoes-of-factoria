@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "eof:raw_chromite"
+  },
+  "result": "eof:cracked_raw_chromite"
+}

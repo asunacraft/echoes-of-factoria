@@ -1,6 +1,8 @@
 package net.asunacraft.eof.registry;
 
 import net.asunacraft.eof.EchoesOfFactoria;
+import net.asunacraft.eof.block.ElectricCrusherBlock;
+import net.asunacraft.eof.block.ElectricFurnaceBlock;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -16,10 +18,24 @@ public class EOFBlocks {
 
     public static final RegistryObject<Block> ELECTRIC_FURNACE = BLOCKS.register(
             "electric_furnace",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new ElectricFurnaceBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(3.5f)
                     .requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> ELECTRIC_CRUSHER = BLOCKS.register(
+            "electric_crusher",
+            () -> new ElectricCrusherBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.5f)
+                    .requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> CASING_ULV = casing("casing_ulv");
+    public static final RegistryObject<Block> CASING_LV = casing("casing_lv");
+    public static final RegistryObject<Block> CASING_MV = casing("casing_mv");
+    public static final RegistryObject<Block> CASING_HV = casing("casing_hv");
+    public static final RegistryObject<Block> CASING_EV = casing("casing_ev");
+    public static final RegistryObject<Block> CASING_IV = casing("casing_iv");
 
     public static final RegistryObject<Block> SPHALERITE_ORE = ore("sphalerite_ore", MapColor.SAND, SoundType.STONE);
     public static final RegistryObject<Block> DEEPSLATE_SPHALERITE_ORE = ore("deepslate_sphalerite_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
@@ -44,6 +60,14 @@ public class EOFBlocks {
 
     public static final RegistryObject<Block> PYRITE_ORE = ore("pyrite_ore", MapColor.STONE, SoundType.STONE);
     public static final RegistryObject<Block> DEEPSLATE_PYRITE_ORE = ore("deepslate_pyrite_ore", MapColor.DEEPSLATE, SoundType.DEEPSLATE);
+
+    private static RegistryObject<Block> casing(String name) {
+        return BLOCKS.register(name, () -> new Block(BlockBehaviour.Properties.of()
+                .mapColor(MapColor.METAL)
+                .strength(3.5f)
+                .sound(SoundType.METAL)
+                .requiresCorrectToolForDrops()));
+    }
 
     private static RegistryObject<Block> ore(String name, MapColor color, SoundType sound) {
         return BLOCKS.register(name, () -> new Block(BlockBehaviour.Properties.of()

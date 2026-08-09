@@ -1,5 +1,13 @@
 {
   "values": [
+    "eof:electric_furnace",
+    "eof:electric_crusher",
+    "eof:casing_ulv",
+    "eof:casing_lv",
+    "eof:casing_mv",
+    "eof:casing_hv",
+    "eof:casing_ev",
+    "eof:casing_iv",
     "eof:cassiterite_ore",
     "eof:deepslate_cassiterite_ore",
     "eof:galena_ore",

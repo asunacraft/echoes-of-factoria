@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "eof:item/cracked/stone_base",
+    "layer1": "eof:item/cracked/cracked_raw_acanthite_overlay"
+  }
+}

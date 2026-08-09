@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "eof:block/machine_casings/casing_lv",
+    "front": "eof:block/machines/electric_crusher_front_on",
+    "side": "eof:block/machine_casings/casing_lv"
+  }
+}

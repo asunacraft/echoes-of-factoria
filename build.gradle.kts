@@ -1,7 +1,9 @@
 plugins {
     eclipse
     idea
-    id("net.minecraftforge.gradle") version "6.0.+"
+    alias(libs.plugins.forgegradle)
+    alias(libs.plugins.spotbugs)
+    pmd
 }
 
 version = "1.0.0"
@@ -9,10 +11,6 @@ group = "net.asunacraft.eof"
 base.archivesName.set("eof")
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-
-val mcVersion = project.property("minecraft_version") as String
-val fgVersion = project.property("forge_version") as String
-val mcMappingVersion = project.property("mapping_version") as String
 
 sourceSets {
     main {
@@ -29,7 +27,7 @@ tasks.processResources {
         "mod_authors" to project.property("mod_authors"),
         "forge_version_range" to project.property("forge_version_range"),
         "loader_version_range" to project.property("loader_version_range"),
-        "minecraft_version" to project.property("minecraft_version")
+        "minecraft_version" to libs.versions.minecraft.get()
     )
 
     inputs.properties(expandProps)
@@ -40,7 +38,7 @@ tasks.processResources {
 }
 
 minecraft {
-    mappings("official", mcMappingVersion)
+    mappings("official", libs.versions.mappings.get())
 
     runs {
         create("client") {
@@ -92,5 +90,30 @@ minecraft {
 }
 
 dependencies {
-    "minecraft"("net.minecraftforge:forge:${mcVersion}-${fgVersion}")
+    "minecraft"("net.minecraftforge:forge:${libs.versions.minecraft.get()}-${libs.versions.forge.get()}")
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.compilerArgs.add("-Xlint:all")
+}
+
+spotbugs {
+    ignoreFailures.set(true)
+    effort.set(com.github.spotbugs.snom.Effort.DEFAULT)
+    reportLevel.set(com.github.spotbugs.snom.Confidence.LOW)
+    excludeFilter = file("config/spotbugs/exclude.xml")
+}
+
+tasks.withType<com.github.spotbugs.snom.SpotBugsTask>().configureEach {
+    reports {
+        create("html") {
+            required.set(true)
+        }
+    }
+}
+
+pmd {
+    isIgnoreFailures = true
+    ruleSetFiles = files("config/pmd/ruleset.xml")
+    toolVersion = libs.versions.pmd.get()
 }

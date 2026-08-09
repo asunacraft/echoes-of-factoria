@@ -1,0 +1,8 @@
+{
+  "type": "eof:crushing",
+  "count": 1,
+  "ingredient": {
+    "item": "eof:cracked_raw_acanthite"
+  },
+  "result": "eof:silver_dust"
+}
