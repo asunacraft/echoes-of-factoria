@@ -23,6 +23,7 @@ public class EOFCreativeTabs {
             .displayItems((parameters, output) -> {
                 output.accept(EOFBlocks.ELECTRIC_FURNACE.get());
                 output.accept(EOFBlocks.ELECTRIC_CRUSHER.get());
+                output.accept(EOFBlocks.STEAM_BOILER.get());
 
                 output.accept(EOFBlocks.CASING_ULV.get());
                 output.accept(EOFBlocks.CASING_LV.get());

@@ -19,6 +19,7 @@ public class EOFLootSubProvider extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(EOFBlocks.ELECTRIC_FURNACE.get());
         this.dropSelf(EOFBlocks.ELECTRIC_CRUSHER.get());
+        this.dropSelf(EOFBlocks.STEAM_BOILER.get());
 
         this.dropSelf(EOFBlocks.CASING_ULV.get());
         this.dropSelf(EOFBlocks.CASING_LV.get());

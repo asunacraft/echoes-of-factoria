@@ -3,6 +3,7 @@ package net.asunacraft.eof.registry;
 import net.asunacraft.eof.EchoesOfFactoria;
 import net.asunacraft.eof.block.ElectricCrusherBlock;
 import net.asunacraft.eof.block.ElectricFurnaceBlock;
+import net.asunacraft.eof.block.SteamBoilerBlock;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -26,6 +27,13 @@ public class EOFBlocks {
     public static final RegistryObject<Block> ELECTRIC_CRUSHER = BLOCKS.register(
             "electric_crusher",
             () -> new ElectricCrusherBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.5f)
+                    .requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> STEAM_BOILER = BLOCKS.register(
+            "steam_boiler",
+            () -> new SteamBoilerBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(3.5f)
                     .requiresCorrectToolForDrops()));

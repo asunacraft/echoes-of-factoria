@@ -14,7 +14,6 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Consumer;
@@ -56,6 +55,8 @@ public class EOFRecipeProvider extends RecipeProvider {
         alloy(writer, EOFItems.BRASS_INGOT, Items.COPPER_INGOT, EOFItems.ZINC_INGOT, "zinc");
         alloy(writer, EOFItems.BRONZE_INGOT, Items.COPPER_INGOT, EOFItems.TIN_INGOT, "tin");
 
+        steamBoiler(writer);
+
         electricFurnace(writer);
         electricCrusher(writer);
     }
@@ -81,6 +82,18 @@ public class EOFRecipeProvider extends RecipeProvider {
                 .pattern("IRI")
                 .pattern("ICI")
                 .unlockedBy("has_casing", has(EOFBlocks.CASING_ULV.get()))
+                .save(writer);
+    }
+
+    private void steamBoiler(Consumer<FinishedRecipe> writer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EOFBlocks.STEAM_BOILER.get())
+                .define('C', EOFBlocks.CASING_LV.get())
+                .define('I', Items.IRON_INGOT)
+                .define('R', Items.REDSTONE)
+                .pattern("III")
+                .pattern("ICI")
+                .pattern("IRI")
+                .unlockedBy("has_casing_lv", has(EOFBlocks.CASING_LV.get()))
                 .save(writer);
     }
 

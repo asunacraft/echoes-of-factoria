@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": { "layer0": "eof:item/vials/empty_vial" },
+  "overrides": [
+    { "predicate": { "eof:fluid": 1 }, "model": "eof:item/vial_water" },
+    { "predicate": { "eof:fluid": 2 }, "model": "eof:item/vial_filled" }
+  ]
+}

@@ -64,10 +64,7 @@ public class EOFItemModelProvider extends ItemModelProvider {
 
         blockItem(EOFBlocks.ELECTRIC_FURNACE);
         blockItem(EOFBlocks.ELECTRIC_CRUSHER);
-
-        withExistingParent("vial", "item/generated")
-            .texture("layer0", modLoc("item/vials/empty_vial"))
-            .texture("layer1", modLoc("item/vials/vial_liquid"));
+        blockItem(EOFBlocks.STEAM_BOILER);
     }
 
     private void basicItem(RegistryObject<Item> item, String category) {

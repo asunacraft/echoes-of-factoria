@@ -21,6 +21,9 @@ public class EOFLanguageProvider extends LanguageProvider {
         add(EOFBlocks.ELECTRIC_CRUSHER.get(), "Electric Crusher");
         add("container.eof.electric_crusher", "Electric Crusher");
 
+        add(EOFBlocks.STEAM_BOILER.get(), "Steam Boiler");
+        add("container.eof.steam_boiler", "Steam Boiler");
+
         add(EOFBlocks.CASING_ULV.get(), "ULV Machine Casing");
         add(EOFBlocks.CASING_LV.get(), "LV Machine Casing");
         add(EOFBlocks.CASING_MV.get(), "MV Machine Casing");

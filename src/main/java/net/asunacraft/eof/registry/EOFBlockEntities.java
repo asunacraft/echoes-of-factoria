@@ -3,6 +3,7 @@ package net.asunacraft.eof.registry;
 import net.asunacraft.eof.EchoesOfFactoria;
 import net.asunacraft.eof.block.entity.ElectricCrusherBlockEntity;
 import net.asunacraft.eof.block.entity.ElectricFurnaceBlockEntity;
+import net.asunacraft.eof.block.entity.SteamBoilerBlockEntity;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,5 +22,10 @@ public class EOFBlockEntities {
     public static final RegistryObject<BlockEntityType<ElectricCrusherBlockEntity>> ELECTRIC_CRUSHER =
             BLOCK_ENTITIES.register("electric_crusher",
                     () -> BlockEntityType.Builder.of(ElectricCrusherBlockEntity::new, EOFBlocks.ELECTRIC_CRUSHER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<SteamBoilerBlockEntity>> STEAM_BOILER =
+            BLOCK_ENTITIES.register("steam_boiler",
+                    () -> BlockEntityType.Builder.of(SteamBoilerBlockEntity::new, EOFBlocks.STEAM_BOILER.get())
                             .build(null));
 }

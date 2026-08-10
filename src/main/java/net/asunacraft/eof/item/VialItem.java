@@ -238,12 +238,15 @@ public class VialItem extends Item {
             if (resource.isEmpty() || existing.isEmpty() || !existing.isFluidEqual(resource)) {
                 return FluidStack.EMPTY;
             }
+
             int drained = Math.min(existing.getAmount(), resource.getAmount());
             FluidStack result = existing.copy();
             result.setAmount(drained);
+            
             if (action.execute()) {
                 VialItem.setFluid(container, new FluidStack(existing.getFluid(), existing.getAmount() - drained));
             }
+            
             return result;
         }
     }

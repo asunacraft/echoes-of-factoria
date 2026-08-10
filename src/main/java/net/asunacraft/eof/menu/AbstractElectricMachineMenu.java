@@ -108,6 +108,7 @@ public abstract class AbstractElectricMachineMenu extends AbstractContainerMenu 
         if (blockEntity == null || blockEntity.getLevel() == null) {
             return true;
         }
+        
         return player.distanceToSqr(blockEntity.getBlockPos().getX() + 0.5,
                 blockEntity.getBlockPos().getY() + 0.5, blockEntity.getBlockPos().getZ() + 0.5) < 64.0;
     }

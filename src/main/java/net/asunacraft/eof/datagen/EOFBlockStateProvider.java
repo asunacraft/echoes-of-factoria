@@ -28,6 +28,7 @@ public class EOFBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         electricFurnace();
         electricCrusher();
+        steamBoiler();
 
         simpleCasing(EOFBlocks.CASING_ULV);
         simpleCasing(EOFBlocks.CASING_LV);
@@ -72,6 +73,21 @@ public class EOFBlockStateProvider extends BlockStateProvider {
                 .partialState().with(FACING, Direction.SOUTH).with(LIT, true).modelForState().modelFile(on).rotationY(180).addModel()
                 .partialState().with(FACING, Direction.WEST).with(LIT, true).modelForState().modelFile(on).rotationY(270).addModel();
         simpleBlockItem(EOFBlocks.ELECTRIC_FURNACE.get(), off);
+    }
+
+    private void steamBoiler() {
+        ModelFile off = models().getExistingFile(modLoc("block/steam_boiler"));
+        ModelFile on = models().getExistingFile(modLoc("block/steam_boiler_on"));
+        getVariantBuilder(EOFBlocks.STEAM_BOILER.get())
+                .partialState().with(FACING, Direction.NORTH).with(LIT, false).modelForState().modelFile(off).rotationY(0).addModel()
+                .partialState().with(FACING, Direction.EAST).with(LIT, false).modelForState().modelFile(off).rotationY(90).addModel()
+                .partialState().with(FACING, Direction.SOUTH).with(LIT, false).modelForState().modelFile(off).rotationY(180).addModel()
+                .partialState().with(FACING, Direction.WEST).with(LIT, false).modelForState().modelFile(off).rotationY(270).addModel()
+                .partialState().with(FACING, Direction.NORTH).with(LIT, true).modelForState().modelFile(on).rotationY(0).addModel()
+                .partialState().with(FACING, Direction.EAST).with(LIT, true).modelForState().modelFile(on).rotationY(90).addModel()
+                .partialState().with(FACING, Direction.SOUTH).with(LIT, true).modelForState().modelFile(on).rotationY(180).addModel()
+                .partialState().with(FACING, Direction.WEST).with(LIT, true).modelForState().modelFile(on).rotationY(270).addModel();
+        simpleBlockItem(EOFBlocks.STEAM_BOILER.get(), off);
     }
 
     private void electricCrusher() {

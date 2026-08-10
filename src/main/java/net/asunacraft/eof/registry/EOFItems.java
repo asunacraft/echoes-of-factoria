@@ -27,6 +27,11 @@ public class EOFItems {
         () -> new BlockItem(EOFBlocks.ELECTRIC_CRUSHER.get(), new Item.Properties())
     );
 
+    public static final RegistryObject<Item> STEAM_BOILER = ITEMS.register(
+        "steam_boiler",
+        () -> new BlockItem(EOFBlocks.STEAM_BOILER.get(), new Item.Properties())
+    );
+
     public static final RegistryObject<Item> CASING_ULV = blockItem(EOFBlocks.CASING_ULV, "casing_ulv");
     public static final RegistryObject<Item> CASING_LV = blockItem(EOFBlocks.CASING_LV, "casing_lv");
     public static final RegistryObject<Item> CASING_MV = blockItem(EOFBlocks.CASING_MV, "casing_mv");

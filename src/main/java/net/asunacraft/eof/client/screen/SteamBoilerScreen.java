@@ -1,7 +1,7 @@
 package net.asunacraft.eof.client.screen;
 
+import net.asunacraft.eof.menu.SteamBoilerMenu;
 import net.asunacraft.eof.energy.VoltageTier;
-import net.asunacraft.eof.menu.AbstractElectricMachineMenu;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -9,14 +9,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-/**
- * Shared GUI for electric machines: renders the background texture, the
- * animated progress arrow and the energy bar, plus a hover tooltip showing
- * stored energy and tier. Subclasses supply the menu type.
- */
-public abstract class AbstractElectricMachineScreen<T extends AbstractElectricMachineMenu>
-        extends AbstractContainerScreen<T> {
-    protected static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath("eof",
+public class SteamBoilerScreen extends AbstractContainerScreen<SteamBoilerMenu> {
+    private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath("eof",
             "textures/gui/machine.png");
     private static final int ENERGY_BAR_X = 8;
     private static final int ENERGY_BAR_Y = 17;
@@ -26,33 +20,14 @@ public abstract class AbstractElectricMachineScreen<T extends AbstractElectricMa
     private static final int[] ENERGY_GRADIENT = {
             0xFF5BE8FF, 0xFF3BB7F5, 0xFF2280DC, 0xFF164FB0, 0xFF0E337E
     };
+    private static final int BURN_ARROW_X = 79;
+    private static final int BURN_ARROW_Y = 34;
+    private static final int BURN_ARROW_W = 24;
 
-    protected AbstractElectricMachineScreen(T menu, Inventory inv, Component title) {
+    public SteamBoilerScreen(SteamBoilerMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
         this.imageWidth = 176;
         this.imageHeight = 166;
-    }
-
-    // --- progress arrow geometry (override for custom layouts) ---
-
-    protected int getArrowU() {
-        return 176;
-    }
-
-    protected int getArrowV() {
-        return 14;
-    }
-
-    protected int getArrowX() {
-        return 79;
-    }
-
-    protected int getArrowY() {
-        return 34;
-    }
-
-    protected int getArrowWidth() {
-        return 24;
     }
 
     @Override
@@ -61,12 +36,11 @@ public abstract class AbstractElectricMachineScreen<T extends AbstractElectricMa
         int y = (height - imageHeight) / 2;
         guiGraphics.blit(BACKGROUND, x, y, 0, 0, imageWidth, imageHeight);
 
-        int progress = menu.getProgress();
-        int maxProgress = menu.getMaxProgress();
-        if (maxProgress > 0 && progress > 0) {
-            int arrow = Math.min(getArrowWidth(), progress * getArrowWidth() / maxProgress);
-            guiGraphics.blit(BACKGROUND, x + getArrowX(), y + getArrowY(),
-                    getArrowU(), getArrowV(), arrow + 1, ARROW_H);
+        int burnTime = menu.getBurnTime();
+        int burnDuration = menu.getBurnDuration();
+        if (burnDuration > 0 && burnTime > 0) {
+            int arrow = Math.min(BURN_ARROW_W, burnTime * BURN_ARROW_W / burnDuration);
+            guiGraphics.blit(BACKGROUND, x + BURN_ARROW_X, y + BURN_ARROW_Y, 176, 14, arrow + 1, ARROW_H);
         }
 
         int energy = menu.getEnergyStored();
@@ -78,7 +52,7 @@ public abstract class AbstractElectricMachineScreen<T extends AbstractElectricMa
                     x + ENERGY_BAR_X + ENERGY_BAR_W, y + ENERGY_BAR_Y + ENERGY_BAR_H, 0xFF0A0A0A);
 
             int fill = (int) ((long) energy * ENERGY_BAR_H / capacity);
-            
+
             for (int i = 0; i < fill; i++) {
                 int row = y + ENERGY_BAR_Y + ENERGY_BAR_H - 1 - i;
                 int color = ENERGY_GRADIENT[Math.min(ENERGY_GRADIENT.length - 1,
