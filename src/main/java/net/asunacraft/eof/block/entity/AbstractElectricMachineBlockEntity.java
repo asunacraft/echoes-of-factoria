@@ -116,6 +116,14 @@ public abstract class AbstractElectricMachineBlockEntity extends BlockEntity imp
         return energyBuffer.getEnergyStored() - before;
     }
 
+    /** Top the buffer up to full capacity. For dev commands. */
+    public long fillDebugEnergy() {
+        long before = energyBuffer.getEnergyStored();
+        energyBuffer.setEnergy(energyBuffer.getEnergyCapacity());
+        setChanged();
+        return energyBuffer.getEnergyStored() - before;
+    }
+
     /** Is there a valid, completable job right now? */
     protected abstract boolean canCraft();
 

@@ -16,13 +16,16 @@ import net.minecraft.world.entity.player.Inventory;
  */
 public abstract class AbstractElectricMachineScreen<T extends AbstractElectricMachineMenu>
         extends AbstractContainerScreen<T> {
-    protected static final ResourceLocation BACKGROUND =
-            ResourceLocation.fromNamespaceAndPath("eof", "textures/gui/machine.png");
+    protected static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath("eof",
+            "textures/gui/machine.png");
     private static final int ENERGY_BAR_X = 8;
     private static final int ENERGY_BAR_Y = 17;
     private static final int ENERGY_BAR_W = 12;
     private static final int ENERGY_BAR_H = 52;
     private static final int ARROW_H = 17;
+    private static final int[] ENERGY_GRADIENT = {
+            0xFF5BE8FF, 0xFF3BB7F5, 0xFF2280DC, 0xFF164FB0, 0xFF0E337E
+    };
 
     protected AbstractElectricMachineScreen(T menu, Inventory inv, Component title) {
         super(menu, inv, title);
@@ -70,13 +73,20 @@ public abstract class AbstractElectricMachineScreen<T extends AbstractElectricMa
         int capacity = menu.getEnergyCapacity();
         if (capacity > 0) {
             guiGraphics.fill(x + ENERGY_BAR_X - 1, y + ENERGY_BAR_Y - 1,
-                    x + ENERGY_BAR_X + ENERGY_BAR_W + 1, y + ENERGY_BAR_Y + ENERGY_BAR_H + 1, 0xFF000000);
+                    x + ENERGY_BAR_X + ENERGY_BAR_W + 1, y + ENERGY_BAR_Y + ENERGY_BAR_H + 1, 0xFF202020);
             guiGraphics.fill(x + ENERGY_BAR_X, y + ENERGY_BAR_Y,
-                    x + ENERGY_BAR_X + ENERGY_BAR_W, y + ENERGY_BAR_Y + ENERGY_BAR_H, 0xFF111111);
+                    x + ENERGY_BAR_X + ENERGY_BAR_W, y + ENERGY_BAR_Y + ENERGY_BAR_H, 0xFF0A0A0A);
+
             int fill = (int) ((long) energy * ENERGY_BAR_H / capacity);
+            for (int i = 0; i < fill; i++) {
+                int row = y + ENERGY_BAR_Y + ENERGY_BAR_H - 1 - i;
+                int color = ENERGY_GRADIENT[Math.min(ENERGY_GRADIENT.length - 1,
+                        i * ENERGY_GRADIENT.length / Math.max(1, fill))];
+                guiGraphics.fill(x + ENERGY_BAR_X, row, x + ENERGY_BAR_X + ENERGY_BAR_W, row + 1, color);
+            }
             if (fill > 0) {
                 guiGraphics.fill(x + ENERGY_BAR_X, y + ENERGY_BAR_Y + ENERGY_BAR_H - fill,
-                        x + ENERGY_BAR_X + ENERGY_BAR_W, y + ENERGY_BAR_Y + ENERGY_BAR_H, energyColor(energy, capacity));
+                        x + ENERGY_BAR_X + ENERGY_BAR_W, y + ENERGY_BAR_Y + ENERGY_BAR_H - fill + 1, 0xFF9FF6FF);
             }
         }
     }
@@ -107,16 +117,5 @@ public abstract class AbstractElectricMachineScreen<T extends AbstractElectricMa
     private boolean isHoveringEnergyBar(int relX, int relY) {
         return relX >= ENERGY_BAR_X - 1 && relX <= ENERGY_BAR_X + ENERGY_BAR_W + 1
                 && relY >= ENERGY_BAR_Y - 1 && relY <= ENERGY_BAR_Y + ENERGY_BAR_H + 1;
-    }
-
-    private static int energyColor(int energy, int capacity) {
-        float fill = capacity == 0 ? 0.0f : (float) energy / capacity;
-        if (fill > 0.5f) {
-            return 0xFF55FF55;
-        }
-        if (fill > 0.25f) {
-            return 0xFFFFAA00;
-        }
-        return 0xFFFF5555;
     }
 }

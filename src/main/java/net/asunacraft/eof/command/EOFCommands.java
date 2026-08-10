@@ -21,8 +21,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 /**
- * Dev commands. Usage: /eof debug energy add &lt;amount&gt;
- * Adds FE straight into the buffer of the machine you are looking at.
+ * Dev commands. Usage:
+ * {@code /eof debug energy fill} fills the machine you are looking at to
+ * capacity; {@code /eof debug energy add <amount>} adds FE straight into its
+ * buffer. Use {@code fill} for testing: a one-shot {@code add} may leave the
+ * machine short of the energy needed to finish a job.
  */
 @Mod.EventBusSubscriber(modid = EchoesOfFactoria.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public final class EOFCommands {
@@ -36,6 +39,9 @@ public final class EOFCommands {
         event.getDispatcher().register(Commands.literal("eof")
                 .then(Commands.literal("debug")
                         .then(Commands.literal("energy")
+                                .then(Commands.literal("fill")
+                                        .requires(source -> source.hasPermission(2))
+                                        .executes(ctx -> fillEnergy(ctx)))
                                 .then(Commands.literal("add")
                                         .requires(source -> source.hasPermission(2))
                                         .then(Commands.argument("amount", IntegerArgumentType.integer(1))
@@ -46,17 +52,8 @@ public final class EOFCommands {
     private static int addEnergy(CommandContext<CommandSourceStack> ctx, int amount)
             throws CommandSyntaxException {
         CommandSourceStack source = ctx.getSource();
-        ServerPlayer player = source.getPlayerOrException();
-        Level level = player.level();
-
-        BlockPos pos = rayTarget(player);
-        if (pos == null) {
-            source.sendFailure(Component.literal("You are not looking at a block."));
-            return 0;
-        }
-        BlockEntity be = level.getBlockEntity(pos);
-        if (!(be instanceof AbstractElectricMachineBlockEntity machine)) {
-            source.sendFailure(Component.literal("That is not an electric machine."));
+        AbstractElectricMachineBlockEntity machine = lookAtMachine(source);
+        if (machine == null) {
             return 0;
         }
 
@@ -64,6 +61,38 @@ public final class EOFCommands {
         source.sendSuccess(() -> Component.literal("Added " + added + " FE (" + machine.getEnergyStored()
                 + " / " + machine.getEnergyCapacity() + " FE)"), true);
         return 1;
+    }
+
+    private static int fillEnergy(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        CommandSourceStack source = ctx.getSource();
+        AbstractElectricMachineBlockEntity machine = lookAtMachine(source);
+        if (machine == null) {
+            return 0;
+        }
+
+        long added = machine.fillDebugEnergy();
+        source.sendSuccess(() -> Component.literal("Filled +" + added + " FE (" + machine.getEnergyStored()
+                + " / " + machine.getEnergyCapacity() + " FE)"), true);
+        return 1;
+    }
+
+    /** The electric machine the player is looking at, or null after a failure message. */
+    private static AbstractElectricMachineBlockEntity lookAtMachine(CommandSourceStack source)
+            throws CommandSyntaxException {
+        ServerPlayer player = source.getPlayerOrException();
+        Level level = player.level();
+
+        BlockPos pos = rayTarget(player);
+        if (pos == null) {
+            source.sendFailure(Component.literal("You are not looking at a block."));
+            return null;
+        }
+        BlockEntity be = level.getBlockEntity(pos);
+        if (!(be instanceof AbstractElectricMachineBlockEntity machine)) {
+            source.sendFailure(Component.literal("That is not an electric machine."));
+            return null;
+        }
+        return machine;
     }
 
     /** Block the player is looking at, or null if they hit nothing. */
